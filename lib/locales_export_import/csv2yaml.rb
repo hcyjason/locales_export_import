@@ -15,7 +15,7 @@ module LocalesExportImport
             locale = header.partition('_').first
             unless @yaml.has_key?(locale)
               locale_file = get_output_file_name(locale, output_path, file_prefix)
-              @yaml[locale] = ::File.exists?(locale_file) ? ::YAML.load_file(locale_file) : ::Hash.new
+              @yaml[locale] = ::File.exist?(locale_file) ? ::YAML.load_file(locale_file) : ::Hash.new
             end
             value = row[header]
             key_for_locale = [locale, key.partition('.').last].join('.')
